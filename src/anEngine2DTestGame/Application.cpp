@@ -14,11 +14,6 @@
 #include <math.h>
 #include <time.h>
 
-// mQuadPositions[0] = { -0.5f, -0.5f, 0.0f };
-// mQuadPositions[1] = { 0.5f, -0.5f, 0.0f };
-// mQuadPositions[2] = { 0.5f,  0.5f, 0.0f };
-// mQuadPositions[3] = { -0.5f,  0.5f, 0.0f };
-
 struct Rect
 {
 	anFloat2 p0;
@@ -87,11 +82,11 @@ public:
 
 		mMenuScene = new anScene();
 
-		const anString descText = "Press Enter to Start the Game";
+		const anString descText = "Press Enter to Start the Game\n\n  Press Escape to Exit Game";
 		mMenuText = new anTextObject("Menu Scene Desc Text");
 		mMenuText->SetFont(mRaleway);
 		mMenuText->SetText(descText);
-		mMenuText->SetPosition({ (descText.size() * (float)mRaleway.GetSize()) * -0.25f, (float)mRaleway.GetSize() });
+		mMenuText->SetPosition({ (descText.size() * (float)mRaleway.GetSize()) * -0.125f, (float)mRaleway.GetSize() });
 
 		mMenuScene->AddObject(mMenuText);
 
@@ -207,8 +202,8 @@ public:
 			{
 				mGameFinished = true;
 			
-				mScoreText->SetText("\tThe End\n\n\nYour Score: " + anToString(mGameScore));
-				mScoreText->SetPosition({ -3.0f * (float)mRaleway.GetSize(), 0.0f});
+				mScoreText->SetText("\t\t\t\tThe End\n\n\n\t\t\tYour Score: " + anToString(mGameScore) + "\nPress Enter to Return Menu");
+				mScoreText->SetPosition({ -6.0f * (float)mRaleway.GetSize(), 0.0f});
 			}
 
 			mPlayer->SetPosition(mPlayerPosition);
@@ -258,6 +253,9 @@ public:
 					mGameScore = 0;
 					mScoreText->SetText(anToString(mGameScore));
 					mScoreText->SetPosition({ (float)mRaleway.GetSize() * 0.25f, (float)mRaleway.GetSize() * -10.0f });
+					mPlayerRect.SetTransform(mPlayer->GetPosition(), mPlayer->GetSize(), mPlayer->GetRotation());
+					mBlock0Rect.SetTransform(mBlock0->GetPosition(), mBlock0->GetSize());
+					mBlock1Rect.SetTransform(mBlock1->GetPosition(), mBlock1->GetSize());
 				}
 			}
 		}
