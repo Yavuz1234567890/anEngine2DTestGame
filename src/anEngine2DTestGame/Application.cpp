@@ -56,7 +56,7 @@ class anEngine2DTestGameApplication : public anApplication
 {
 public:
 	anEngine2DTestGameApplication()
-		: anApplication({ "anEngine2D Test Game", 450, 650, false })
+		: anApplication({ "anEngine2D Test Game", 450, 650, true })
 	{
 	}
 

@@ -43,7 +43,7 @@ void anApplication::Start()
 			fps = 0;
 		}
 		++fps;
-		
+
 		mStateManager->Update(dt);
 		Update(dt);
 		mWindow->Present();
@@ -52,6 +52,7 @@ void anApplication::Start()
 
 void anApplication::AOnEvent(const anEvent& event)
 {
+	mStateManager->OnEvent(event);
 	OnEvent(event);
 }
 
